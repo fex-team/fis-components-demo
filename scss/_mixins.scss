@@ -1,0 +1,46 @@
+@import "variables";
+
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+    // Create a couple of empty lists as output buffers.
+    $font-size: $rem-base;
+    $px-values: ();
+    $rem-values: ();
+    $different: false;
+    // Loop through the $values list
+    @each $value in $values {
+        @if type-of($value) == "number" and unit($value) == "px" {
+            $value: strip-unit($value);
+            $new-rem-value: $value / $font-size;
+            $px-values: join($px-values, #{round($value)}px);
+            $rem-values: join($rem-values, #{$new-rem-value}rem);
+            $different: true;
+        }
+        @else if type-of($value) == "number" and unit($value) == "%" {
+            $px-values: join($px-values, #{$value});
+            $rem-values: join($rem-values, #{$value});
+        }
+        @else if $value == auto {
+            $px-values: join($px-values, auto);
+            $rem-values: join($rem-values, auto);
+        }
+        @else if type-of($value) == "number" {
+            $value: strip-unit($value);
+            $px-values: join($px-values, #{round($value * $font-size)}px);
+            $rem-values: join($rem-values, #{$value}rem);
+            $different: true;
+        }
+        @else {
+            $px-values: join($px-values, #{$value});
+            $rem-values: join($rem-values, #{$value});
+        }
+    }
+    // output the converted rules
+    #{$property}: $px-values;
+    @if $different {
+        #{$property}: $rem-values;
+    }
+}
