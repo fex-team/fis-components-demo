@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>jQuery Validation</title>
+        <link rel="stylesheet" type="text/css" href="./scss/style.scss">
+        <!--STYLE_PLACEHOLDER-->
+    </head>
+    <body>
+        <link rel="import" href="partials/_nav.html?__inline">
+        <div class="container">
+            <form action="#" id="theform">
+                <fieldset>
+                    <legend><h1>jQuery Validation Demo</h1></legend>
+                    <div class="form-group">
+                        <label for="input1">Email address *</label>
+                        <input type="email" name="email" required="required" class="form-control" id="input1" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="input2">User *</label>
+                        <input type="text"  name="user" required="required" class="form-control" id="input2" placeholder="Required">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNumber1">Number</label>
+                        <input name="number" type="number" class="form-control" id="exampleInputNumber1" placeholder="Number allowed">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <script type="text/javascript" src="./amd_loader/require.js"></script>
+        <!--SCRIPT_PLACEHOLDER-->
+        <!--RESOURCEMAP_PLACEHOLDER-->
+        <script type="text/javascript">
+        require(['jquery', 'jquery-validation', 'jquery-validation/localization/messages_zh'], function($) {
+            $.validator.setDefaults({
+                highlight: function(element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function(error, element) {
+                    var formGroup = $(element).closest('.form-group');
+                    if (formGroup.length) {
+                        formGroup.append(error);
+                    } else if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+            $('#theform').validate({
+                submitHandler: function() {
+                    alert('嘿嘿');
+                }
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -20,12 +20,6 @@ fis.config.set('roadmap.path', [
     {
         reg: '**.html',
         isMod: true
-    },
-
-    // 设置  libs 目录下面的文件为 `isMod`，这样 js 文件会自动包装成 amd 模块。
-    {
-        reg: /^\/libs\/(.*)$/i,
-        isMod: true
     }
 ].concat(fis.config.get('roadmap.path', [])));
 
