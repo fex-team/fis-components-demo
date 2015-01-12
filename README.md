@@ -7,6 +7,7 @@ FIS 组件使用 demo.
 
 ```bash
 npm install fis-parser-sass -g
+npm install fis-postprocessor-require-async -g
 npm install fis-postpackager-autoload -g
 npm install fis-packager-depscombine -g
 ```
