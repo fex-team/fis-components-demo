@@ -19,6 +19,13 @@ npm install fis-packager-depscombine -g
 fis install
 ```
 
+编译运行
+
+```
+fis release
+fis server start
+```
+
 ## 注意
 
 demo 中很多资源都是通过注释来标记依赖而不是直接引用。原因是方便打包工具根据依赖自动合并所有依赖。如果是其他方案 fisp 、jello 或者 yogurt 如果用 fis 提供的标签，没必要通过注释来标志依赖。
