@@ -32,16 +32,6 @@ fis.config.set('modules.postprocessor.js', 'jswrapper, require-async');
 // 开起 autuload, 好处是，依赖自动加载。
 fis.config.set('modules.postpackager', 'autoload');
 
-fis.config.set('modules.parser.scss', 'sass');
-fis.config.set('modules.parser.sass', 'sass');
-fis.config.set('roadmap.ext.scss', 'css');
-fis.config.set('roadmap.ext.sass', 'css');
-
-fis.config.set('settings.parser.sass.include_paths', [
-    path.join(__dirname, 'components/compass-mixins'),
-    path.join(__dirname, 'scss')
-]);
-
 
 // 使用 depscombine 是因为，在配置 pack 的时候，命中的文件其依赖也会打包进来。
 fis.config.set('modules.packager', 'depscombine');

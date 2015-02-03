@@ -7,7 +7,6 @@
     "jquery@^1.9.1",
     "jquery-ui",
     "jquery-validation",
-    "compass-mixins",
     "bootstrap"
   ]
 }
