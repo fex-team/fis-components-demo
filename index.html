@@ -54,7 +54,6 @@
                 // 当第二个 tab 加载完成后，动态初始化日历控件
                 if (ui.tab.index() === 1) {
 
-                    // 通过注释关键字显式的指定异步加载 `fis async`
                     require(['jquery-ui/datepicker', 'jquery-ui/i18n/datepicker-zh-CN'],
                         function () {
                             $('#datepicker').datepicker();
